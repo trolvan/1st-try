@@ -34,8 +34,8 @@
 + commit前缀
 
     1. feat：新功能
-    2. fix：修复bug
+    2. fix：修复
     3. docs：修改非代码的文件
-    4. refactor：代码重构
-    5. chore：无关紧要的小调整
+    4. refactor：重构
+    5. chore：杂务
     6. init：初始化
