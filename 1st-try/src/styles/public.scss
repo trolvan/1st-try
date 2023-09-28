@@ -1,0 +1,92 @@
+@import "variables";
+// 标签
+* {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: $pageTextColor;
+  transition: 0.4s;
+  &:hover {
+    color: $primaryColor;
+    transition: 0.4s;
+  }
+}
+
+// 清除浮动
+.clearfix:before, .clearfix:after {
+  content: '';
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+// 文本
+svg.icon {
+  height: 1em;
+  width: 1em;
+  vertical-align: -0.15em;
+  overflow: hidden;
+  fill: currentColor;
+}
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.bold { font-weight: bold; }
+
+// 文字排列方向
+@each $direction in  left, center, right {
+  .text-#{$direction} {
+    text-align: $direction;
+  }
+}
+
+// 布局
+.fl { float: left; }
+.fr { float: right; }
+
+.flex {
+  display: flex;
+  &.wrap { flex-wrap: wrap; }
+  &:not(.column).v-center { align-items: center; }
+  &:not(.column).h-center { justify-content: center; }
+  &.column {
+    flex-direction: column;
+    &.v-center { justify-content: center; }
+    &.h-center { align-items: center; }
+  }
+  .flex-0 { flex-shrink: 0; }
+  .flex-1 { flex: 1 1 0; }
+}
+
+.h-full { width: 100%; }
+.v-full { height: 100%; }
+
+// 颜色
+.color-red { color: #f56c6c; }
+.color-green { color: #c2e7b0; }
+.color-blue { color: #8cc5ff; }
+
+.bg-blue { background: #8cc5ff; }
+.bg-blue-light { background: #ecf5ff; }
+
+// 事件
+.clickable { cursor: pointer; }
+
+// 滚动条样式
+::-webkit-scrollbar { width: 6px; }
+/*定义滚动条轨道 圆角*/
+::-webkit-scrollbar-track { border-radius: 2px;background-color: $scrollbarTrackColor; }
+/*定义滑块 圆角*/
+::-webkit-scrollbar-thumb { border-radius: 2px;background-color:$scrollbarThumbColor; }
