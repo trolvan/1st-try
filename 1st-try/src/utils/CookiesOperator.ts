@@ -2,7 +2,7 @@ class CookiesOperator {
 	/* 添加cookie 或 根据键名更新对应cookie
    * 能传入四个参数：cname-键名 | cVal-键值 | dVal-存在时间 | dType-时间类型 默认为日
    */
-	setCookie(cname:string, cVal:number, dVal:number, dType:string) {
+	setCookie(cname:string, cVal:any, dVal:number, dType?:string) {
 		const d:Date = new Date()
 		switch (dType) {
 		case 'y': // 年
@@ -27,7 +27,7 @@ class CookiesOperator {
 			d.setTime(d.getTime() + dVal * 24 * 60 * 60 * 1000)
 		}
 		const expires = 'expires=' + d.toLocaleTimeString()
-		document.cookie = cname + '=' + cVal + '; ' + expires
+		document.cookie = `${cname}=${cVal}; ${expires}`
 	}
 	// 根据键名获取cookie对应值
 	getCookie(cname: string) {
@@ -41,7 +41,9 @@ class CookiesOperator {
 	}
 	// 根据键名去除对应cookie
 	removeCookie(cname:string) {
-		document.cookie = cname + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+		document.cookie = `${cname}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`
 	}
 }
+
+export const $co = new CookiesOperator()
 export default CookiesOperator
