@@ -30,7 +30,8 @@ module.exports = {
 			'never'
 		],
 		'eqeqeq': [2, 'always'],
-		'no-mixed-spaces-and-tabs': ['error', 'smart-tabs']
+		'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
+		'vue/multi-word-component-names': 'off'
 	},
 	parserOptions: {
 		ecmaVersion: 'latest'
