@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import {onMounted, onUnmounted, ref} from 'vue'
-import { useRouter } from 'vue-router'
+import {useRouter} from 'vue-router'
+import {useUserStore} from '@/stores'
 import {ElForm, ElFormItem, ElCard, ElButton} from 'element-plus'
 import {$co} from '@/utils/CookiesOperator'
 
 const $router = useRouter()
+const userStore = useUserStore()
 
 const loginForm = ref({
 	username: 'admin',
@@ -23,10 +25,17 @@ function login() {
 	// const data = loginForm.value
 	// toLogin(data).then(successResponse => {
 	// 	if (successResponse.data.code === 200) {
-	// _this.$store.commit('login', _this.loginForm)
-	const path = $router.currentRoute.value.redirectedFrom.path
-	$router.replace({ path: path === '/' ? '/' : (path || '/') })
-	nlnsd.value && $co.setCookie('noLogin', true, 7)
+	const username = loginForm.value.username
+	userStore.login(username)
+	const path = $router.currentRoute.value.redirectedFrom?.path
+      ?? $router.options.history.state.back
+      ?? '/'
+	$router.replace({ path: path })
+	if (nlnsd.value) {
+		$co.setCookie('noLogin', true, 7)
+		$co.setCookie('username', username, 7)
+		$co.setCookie('latestLoginDate', new Date().toLocaleDateString(), 7)
+	}
 	// 	}
 	// })
 	// 	.catch(failResponse => {
