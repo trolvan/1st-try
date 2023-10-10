@@ -37,7 +37,7 @@ class CookiesOperator {
 			const _i: string = item.trim()
 			return _i.startsWith(name)
 		})
-		return cookie ? cookie.substring(name.length, cookie.length) : ''
+		return cookie ? cookie.substring(name.length + 1, cookie.length) : ''
 	}
 	// 根据键名去除对应cookie
 	removeCookie(cname:string) {
