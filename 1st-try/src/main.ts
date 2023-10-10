@@ -17,7 +17,7 @@ app.use(pinia)
 const userStore = useUserStore()
 const username = computed(() => userStore.username)
 router.beforeEach((to, from, next) => {
-	if ($co.getCookie('noLogin')) {
+	if ($co.getCookie('noLogin') || sessionStorage.getItem('noLogin')) {
 		next()
 	} else if (to.meta.auth) {
 		if (username.value) {
