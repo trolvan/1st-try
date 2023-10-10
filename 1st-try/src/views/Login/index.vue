@@ -9,8 +9,8 @@ const $router = useRouter()
 const userStore = useUserStore()
 
 const loginForm = ref({
-	username: 'admin',
-	password: '123'
+	username: '',
+	password: ''
 })
 const nlnsd = ref(true) // 近七天免登录
 
@@ -28,7 +28,7 @@ function login() {
 	const username = loginForm.value.username
 	userStore.login(username)
 	const path = $router.currentRoute.value.redirectedFrom?.path
-      ?? $router.options.history.state.back
+      ?? $router.options.history.state.back?.toString()
       ?? '/'
 	$router.replace({ path: path })
 	if (nlnsd.value) {
