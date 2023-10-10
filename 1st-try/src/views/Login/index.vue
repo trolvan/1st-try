@@ -12,7 +12,12 @@ const loginForm = ref({
 	password: '',
 	noLogin: true // 近七天免登录
 })
-const nlnsd = ref(true) // 近七天免登录
+const rules = ref({
+	username: [{ required: true, message: '用户名不能为空' }],
+	password: [{ required: true, message: '密码不能为空' }]
+})
+
+const form = ref(null)
 
 onMounted(() => {
 	window.addEventListener('keypress', handleKeyPress)
@@ -25,11 +30,15 @@ function login() {
 	// const data = loginForm.value
 	// toLogin(data).then(successResponse => {
 	// 	if (successResponse.data.code === 200) {
-	userStore.login(loginForm.value)
-	const path = $router.currentRoute.value.redirectedFrom?.path
-      ?? $router.options.history.state.back?.toString()
-      ?? '/'
-	$router.replace({ path: path })
+	form.value.validate(v => {
+		if (v) {
+			userStore.login(loginForm.value)
+			const path = $router.currentRoute.value.redirectedFrom?.path
+          ?? $router.options.history.state.back?.toString()
+          ?? '/'
+			$router.replace({ path: path })
+		}
+	})
 	// 	}
 	// })
 	// 	.catch(failResponse => {
@@ -45,12 +54,12 @@ function handleKeyPress(e: any) {
 
 <template>
   <el-card class="login-card">
-    <el-form :model="loginForm" class="login-form">
+    <el-form :model="loginForm" class="login-form" ref="form" :rules="rules">
       <p class="login-title">Login</p>
-      <el-form-item>
+      <el-form-item prop="username">
         <el-input type="text" v-model="loginForm.username" placeholder="用户名"/>
       </el-form-item>
-      <el-form-item>
+      <el-form-item prop="password">
         <el-input type="password" show-password v-model="loginForm.password" placeholder="密码" @keydown.enter="login" />
       </el-form-item>
       <el-form-item>
