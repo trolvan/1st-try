@@ -1,5 +1,6 @@
 import {defineStore} from 'pinia'
 import {$co} from '@/utils/CookiesOperator'
+import dayjs from 'dayjs'
 
 export const useUserStore = defineStore('user', {
 	state: () => ({
@@ -11,7 +12,7 @@ export const useUserStore = defineStore('user', {
 	actions: {
 		login(username: string) {
 			this.username = username
-			this.latestLoginDate = new Date().toLocaleDateString()
+			this.latestLoginDate = dayjs().format('YYYY-MM-DD HH:mm:ss')
 		},
 		logout() {
 			this.$reset()
