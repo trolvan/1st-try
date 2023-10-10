@@ -3,7 +3,6 @@ import {onMounted, onUnmounted, ref} from 'vue'
 import {useRouter} from 'vue-router'
 import {useUserStore} from '@/stores'
 import {ElForm, ElFormItem, ElCard, ElButton} from 'element-plus'
-import {$co} from '@/utils/CookiesOperator'
 
 const $router = useRouter()
 const userStore = useUserStore()
@@ -26,17 +25,11 @@ function login() {
 	// const data = loginForm.value
 	// toLogin(data).then(successResponse => {
 	// 	if (successResponse.data.code === 200) {
-	const username = loginForm.value.username
-	userStore.login(username)
+	userStore.login(loginForm.value)
 	const path = $router.currentRoute.value.redirectedFrom?.path
       ?? $router.options.history.state.back?.toString()
       ?? '/'
 	$router.replace({ path: path })
-	if (nlnsd.value) {
-		$co.setCookie('noLogin', true, 7)
-		$co.setCookie('username', username, 7)
-		$co.setCookie('latestLoginDate', new Date().toLocaleDateString(), 7)
-	}
 	// 	}
 	// })
 	// 	.catch(failResponse => {
