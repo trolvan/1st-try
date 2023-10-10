@@ -9,7 +9,7 @@ export const useUserStore = defineStore('user', {
 	getters: {
 	},
 	actions: {
-		login(username) {
+		login(username: string) {
 			this.username = username
 			this.latestLoginDate = new Date().toLocaleDateString()
 		},
