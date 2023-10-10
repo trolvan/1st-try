@@ -10,7 +10,8 @@ const userStore = useUserStore()
 
 const loginForm = ref({
 	username: '',
-	password: ''
+	password: '',
+	noLogin: true // 近七天免登录
 })
 const nlnsd = ref(true) // 近七天免登录
 
@@ -62,7 +63,9 @@ function handleKeyPress(e: any) {
       <el-form-item>
         <el-button type="primary" @click="login">登录</el-button>
       </el-form-item>
-      <el-checkbox v-model="nlnsd">近七天免登录</el-checkbox>
+      <el-form-item prop="noLogin">
+        <el-checkbox v-model="loginForm.noLogin">近七天免登录</el-checkbox>
+      </el-form-item>
     </el-form>
   </el-card>
 </template>
