@@ -1,20 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+const routes = []
+const rf = import.meta.glob('@/router/*.ts', {eager: true})
+for (const key in rf) {
+	routes.push(rf[key].default)
+}
+
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
 			path: '/login',
 			name: 'login',
-			meta: { title: '关' },
+			meta: { title: '入口' },
 			component: () => import('@/views/Login/index.vue')
 		},
 		{
 			path: '/',
 			name: 'home',
-			meta: { title: '始', auth: true },
+			meta: { title: '首页', auth: true },
 			component: () => import('@/views/Home/index.vue')
-		}
+		},
+		...routes
 	]
 })
 
