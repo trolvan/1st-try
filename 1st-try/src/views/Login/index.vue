@@ -2,7 +2,7 @@
 import {onMounted, onUnmounted, ref} from 'vue'
 import {useRouter} from 'vue-router'
 import {useUserStore} from '@/stores'
-import {ElForm, ElFormItem, ElCard, ElButton} from 'element-plus'
+import type {FormInstance} from 'element-plus'
 
 const $router = useRouter()
 const userStore = useUserStore()
@@ -17,7 +17,7 @@ const rules = ref({
 	password: [{ required: true, message: '密码不能为空' }]
 })
 
-const form = ref(null)
+const formRef = ref<FormInstance>()
 
 onMounted(() => {
 	window.addEventListener('keypress', handleKeyPress)
@@ -30,7 +30,7 @@ function login() {
 	// const data = loginForm.value
 	// toLogin(data).then(successResponse => {
 	// 	if (successResponse.data.code === 200) {
-	form.value.validate(v => {
+	formRef.value?.validate((v: boolean) => {
 		if (v) {
 			userStore.login(loginForm.value)
 			const path = $router.currentRoute.value.redirectedFrom?.path
@@ -54,7 +54,7 @@ function handleKeyPress(e: any) {
 
 <template>
   <el-card class="login-card">
-    <el-form :model="loginForm" class="login-form" ref="form" :rules="rules">
+    <el-form :model="loginForm" class="login-form" ref="formRef" :rules="rules">
       <p class="login-title">Login</p>
       <el-form-item prop="username">
         <el-input type="text" v-model="loginForm.username" placeholder="用户名"/>
