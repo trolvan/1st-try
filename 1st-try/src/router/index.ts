@@ -1,9 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = []
-const rf = import.meta.glob('@/router/*.ts', {eager: true})
+const rf: RF = import.meta.glob('@/router/*.ts', {eager: true})
 for (const key in rf) {
 	routes.push(rf[key].default)
+}
+interface RF {
+	[key: string]: any
 }
 
 const router = createRouter({

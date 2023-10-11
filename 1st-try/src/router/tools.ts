@@ -1,5 +1,5 @@
 const cr = [
-	{ name: 'fontCutter', title: '裁字' }
+	{ name: 'fontCutter', title: '裁字', auth: false }
 ]
 const tools = {
 	path: '/tools',
@@ -12,7 +12,7 @@ const tools = {
 		return {
 			path: child.name,
 			name: child.name,
-			meta: { title: child.title, auth: child.auth || false },
+			meta: { title: child.title, auth: child.auth },
 			component: () => import(`@/views/Tools/${fn}/index.vue`)
 		}
 	})
