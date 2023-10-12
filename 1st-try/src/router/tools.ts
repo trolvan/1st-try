@@ -6,7 +6,7 @@ const tools = {
 	name: 'tools',
 	redirect: `/tools/${cr[0].name}`,
 	meta: { title: '工具' },
-	component: () => import('@/components/Redirect/index.vue'),
+	component: () => import('@/layouts/Base/index.vue'),
 	children: cr.map(child => {
 		const fn = child.name.substring(0, 1).toUpperCase() + child.name.substring(1)
 		return {
