@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import {onMounted, onUnmounted, ref} from 'vue'
+import {onMounted, onUnmounted, ref, reactive} from 'vue'
 import {useRouter} from 'vue-router'
-import {useUserStore} from '@/stores'
+import {useUserStore} from '@/stores/user'
 import type {FormInstance} from 'element-plus'
 
 const $router = useRouter()
 const userStore = useUserStore()
 
-const loginForm = ref({
+const loginForm = reactive({
 	username: '',
 	password: '',
 	noLogin: true // 近七天免登录
@@ -32,7 +32,7 @@ function login() {
 	// 	if (successResponse.data.code === 200) {
 	formRef.value?.validate((v: boolean) => {
 		if (v) {
-			userStore.login(loginForm.value)
+			userStore.login(loginForm)
 			const path = $router.currentRoute.value.redirectedFrom?.path
           ?? $router.options.history.state.back?.toString()
           ?? '/'

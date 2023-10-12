@@ -1,12 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = []
-const rf: RF = import.meta.glob('@/router/*.ts', {eager: true})
+const rf: any = import.meta.glob('@/router/*.ts', {eager: true})
 for (const key in rf) {
 	routes.push(rf[key].default)
-}
-interface RF {
-	[key: string]: any
 }
 
 const router = createRouter({
@@ -15,7 +12,7 @@ const router = createRouter({
 		{
 			path: '/login',
 			name: 'login',
-			meta: { title: '入口' },
+			meta: { title: '入口', noMenu: true },
 			component: () => import('@/views/Login/index.vue')
 		},
 		{
