@@ -28,11 +28,11 @@ export const useUserStore = defineStore('user', {
 			})
 		},
 		logout() {
-			this.$reset()
 			userCookieKey.forEach(key => {
 				$co.removeCookie(key)
 				sessionStorage.removeItem(key)
 			})
+			this.$reset()
 		}
 	}
 })
