@@ -2,3 +2,13 @@
 @import "mixin"; // 样式混合
 @import "public"; // 公共样式
 @import "variables"; // 样式变量
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $pageTextColor;
+  height: 100%;
+  width: 100%;
+  background: #f9f9f9;
+}
