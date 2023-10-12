@@ -12,7 +12,7 @@ defineProps({
     <template v-if="item.children && item.children.length && !item.meta.onlyOneLayer">
       <el-sub-menu :index="item.path">
         <template #title>
-          <span>{{ item.meta.title }}</span>
+          <span>{{ (item as any).meta.title }}</span>
         </template>
         <template v-for="itemChild in item.children" :key="itemChild.path">
           <items :item="itemChild" />
@@ -20,7 +20,7 @@ defineProps({
       </el-sub-menu>
     </template>
     <template v-else>
-      <el-menu-item :index="item.path">{{ item.meta.title }}</el-menu-item>
+      <el-menu-item :index="item.path">{{ (item as any).meta.title }}</el-menu-item>
     </template>
   </div>
 </template>
