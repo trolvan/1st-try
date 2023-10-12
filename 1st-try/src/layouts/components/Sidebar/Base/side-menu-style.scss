@@ -1,0 +1,15 @@
+.sidebar-wp .el-menu.side-menu{
+  border-right: 0;
+}
+.sidebar-wp .side-menu :deep(.el-menu-item) {
+  height: 48px;
+  line-height: 48px;
+  &.is-active {
+    background: #ecf5ff;
+  }
+  &:not(.is-active):hover {
+    background: transparent;
+    color: #409EFF;
+  }
+}
+
