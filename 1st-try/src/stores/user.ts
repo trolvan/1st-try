@@ -11,13 +11,14 @@ export const useUserStore = defineStore('user', {
 	getters: {
 	},
 	actions: {
-		login(loginForm: object) {
+		login(loginForm: any) {
 			this.username = loginForm.username
 			this.latestLoginDate = dayjs().format('YYYY-MM-DD HH:mm:ss')
-			const obj = {}
-			userCookieKey.forEach(key => {
+			this.loginState = 1
+			const obj: any = {}
+			userCookieKey.forEach((key: string) => {
 				const nl = loginForm.noLogin
-				obj[key] = this[key] ?? loginForm[key]
+				obj[key] = (this as any)[key] ?? loginForm[key]
 				if (nl) {
 					$co.setCookie(key, obj[key], 7)
 				} else {
