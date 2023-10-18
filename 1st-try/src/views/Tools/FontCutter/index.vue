@@ -6,7 +6,7 @@ import {FontFormatter} from './utils/FontFormatter'
 
 interface CutterForm {
   file: UploadFile[],
-  text: String
+  text: string
 }
 const cutterForm = reactive<CutterForm>({
 	file: [],
