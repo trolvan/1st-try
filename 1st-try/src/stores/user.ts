@@ -1,4 +1,4 @@
-import {defineStore} from 'pinia'
+import {defineStore, storeToRefs} from 'pinia'
 import {$co} from '@/utils/CookiesOperator'
 import dayjs from 'dayjs'
 
@@ -38,6 +38,8 @@ export const useUserStore = defineStore('user', {
 		}
 	}
 })
+
+export const userStateRefs = () => storeToRefs(useUserStore())
 
 function cookieOrSession(key: string) {
 	return $co.getCookie(key) || sessionStorage.getItem(key)

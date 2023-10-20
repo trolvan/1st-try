@@ -1,11 +1,11 @@
 import './styles/index.scss'
 
 import {createApp} from 'vue'
-import {createPinia, storeToRefs} from 'pinia'
+import {createPinia} from 'pinia'
 
 import App from './App.vue'
 import router from '@/router'
-import {useUserStore} from '@/stores/user'
+import {userStateRefs} from '@/stores/user'
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -13,8 +13,7 @@ const pinia = createPinia()
 app.use(router)
 app.use(pinia)
 
-const userStore = useUserStore()
-const {noLogin, loginState} = storeToRefs(userStore)
+const {noLogin, loginState} = userStateRefs()
 router.beforeEach((to, from, next) => {
 	if (noLogin.value) {
 		next()
