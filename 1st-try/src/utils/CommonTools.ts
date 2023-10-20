@@ -27,7 +27,6 @@ class CommonTools {
 		}
 		const sortedArr = ra.sort((a: number, b: number) => (a - b)) // 排序
 		const [min, max] = sortedArr
-		console.log(sortedArr)
 		result = Math.floor(base * (max - min + 1) + min)
 		return result
 	}
