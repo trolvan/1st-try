@@ -38,12 +38,11 @@ class CookiesOperator {
 	 */
 	getCookie(cname: string) {
 		const name:string = cname + '='
-		const cArray:string[] = document.cookie.split(';')
+		const cArray:string[] = document.cookie.split('; ')
 		const cookie = cArray.find((item) => {
-			const _i: string = item.trim()
-			return _i.startsWith(name)
+			return item.startsWith(name)
 		})
-		return cookie ? cookie.substring(name.length + 1, cookie.length) : ''
+		return cookie ? cookie.substring(name.length, cookie.length) : ''
 	}
 	/**
 	 * @description 根据键名去除对应cookie
