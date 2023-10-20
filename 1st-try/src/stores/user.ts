@@ -5,7 +5,8 @@ import dayjs from 'dayjs'
 const userCookieKey = ['noLogin', 'username', 'latestLoginDate', 'loginState']
 export const useUserStore = defineStore('user', {
 	state: () => ({
-		loginState: parseInt(cookieOrSession('loginState') ?? '0'),
+		noLogin: Number(cookieOrSession('noLogin') ?? 0),
+		loginState: Number(cookieOrSession('loginState') ?? 0),
 		username: cookieOrSession('username'),
 		latestLoginDate: cookieOrSession('latestLoginDate')
 	}),
@@ -13,6 +14,7 @@ export const useUserStore = defineStore('user', {
 	},
 	actions: {
 		login(loginForm: any) {
+			this.noLogin = 1
 			this.username = loginForm.username
 			this.latestLoginDate = dayjs().format('YYYY-MM-DD HH:mm:ss')
 			this.loginState = 1
