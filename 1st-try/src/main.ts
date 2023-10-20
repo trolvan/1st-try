@@ -1,11 +1,10 @@
 import './styles/index.scss'
 
-import {createApp, computed} from 'vue'
-import {createPinia} from 'pinia'
+import {createApp} from 'vue'
+import {createPinia, storeToRefs} from 'pinia'
 
 import App from './App.vue'
 import router from '@/router'
-import {$co} from '@/utils/CookiesOperator'
 import {useUserStore} from '@/stores/user'
 
 const app = createApp(App)
@@ -15,9 +14,9 @@ app.use(router)
 app.use(pinia)
 
 const userStore = useUserStore()
-const loginState = computed(() => userStore.loginState)
+const {noLogin, loginState} = storeToRefs(userStore)
 router.beforeEach((to, from, next) => {
-	if ($co.getCookie('noLogin') || sessionStorage.getItem('noLogin')) {
+	if (noLogin.value) {
 		next()
 	} else if (to.meta.auth) {
 		if (loginState.value > 0) {
