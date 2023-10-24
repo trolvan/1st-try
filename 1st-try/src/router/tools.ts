@@ -1,5 +1,6 @@
 const cr = [
-	{ name: 'fontCutter', title: '裁字', auth: false }
+	{ name: 'fontCutter', title: '裁字', auth: false },
+	{ name: 'echartsDocument', title: 'echarts文档', auth: false }
 ]
 const tools = {
 	path: '/tools',
