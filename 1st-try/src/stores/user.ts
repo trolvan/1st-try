@@ -1,11 +1,12 @@
-import {defineStore} from 'pinia'
+import {defineStore, storeToRefs} from 'pinia'
 import {$co} from '@/utils/CookiesOperator'
 import dayjs from 'dayjs'
 
 const userCookieKey = ['noLogin', 'username', 'latestLoginDate', 'loginState']
 export const useUserStore = defineStore('user', {
 	state: () => ({
-		loginState: parseInt(cookieOrSession('loginState') ?? '0'),
+		noLogin: Number(cookieOrSession('noLogin') ?? 0),
+		loginState: Number(cookieOrSession('loginState') ?? 0),
 		username: cookieOrSession('username'),
 		latestLoginDate: cookieOrSession('latestLoginDate')
 	}),
@@ -13,6 +14,7 @@ export const useUserStore = defineStore('user', {
 	},
 	actions: {
 		login(loginForm: any) {
+			this.noLogin = 1
 			this.username = loginForm.username
 			this.latestLoginDate = dayjs().format('YYYY-MM-DD HH:mm:ss')
 			this.loginState = 1
@@ -36,6 +38,8 @@ export const useUserStore = defineStore('user', {
 		}
 	}
 })
+
+export const userStateRefs = () => storeToRefs(useUserStore())
 
 function cookieOrSession(key: string) {
 	return $co.getCookie(key) || sessionStorage.getItem(key)
