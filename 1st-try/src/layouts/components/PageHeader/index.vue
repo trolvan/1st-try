@@ -87,9 +87,8 @@ function logout() {
     display: flex;
     text-align: right;
     background: transparent;
+    height: 50px;
     .el-menu-item {
-      height: 50px;
-      line-height: 50px;
       color: #000!important;
       &:hover {
         background: rgba(255,255,255,0.45);
