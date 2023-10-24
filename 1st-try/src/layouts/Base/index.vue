@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import PageHeader from '../components/PageHeader/index.vue'
-// import Sidebar from '../components/Sidebar/Base/index.vue'
 import {computed, defineAsyncComponent} from 'vue'
 import {useRoute} from 'vue-router'
 
@@ -8,7 +7,7 @@ const $route = useRoute()
 const withSidebar = computed(() => !$route.meta.hideSidebar)
 const sidebarComp = computed(() => ($route.meta.sidebarComp as string) ?? 'Base')
 const Sidebar = defineAsyncComponent({
-	loader: () => import('../components/Sidebar/' + sidebarComp.value + '/index.vue')
+	loader: () => import('@/layouts/components/Sidebar/' + sidebarComp.value + '/index.vue')
 })
 </script>
 
