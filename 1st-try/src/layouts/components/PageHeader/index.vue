@@ -19,7 +19,6 @@ const themeOptions = [
 	{ label: '深色', value: 'dark' }
 ]
 const showPopover = ref(false)
-console.log(userStore.loginState, hasLogin.value, document.cookie, sessionStorage)
 function handleChangeTheme(val: string) {
 	systemStore.setTheme(val)
 }
@@ -88,9 +87,8 @@ function logout() {
     display: flex;
     text-align: right;
     background: transparent;
+    height: 50px;
     .el-menu-item {
-      height: 50px;
-      line-height: 50px;
       color: #000!important;
       &:hover {
         background: rgba(255,255,255,0.45);

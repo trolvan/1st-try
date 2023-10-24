@@ -7,7 +7,9 @@ import {useRoute} from 'vue-router'
 const $route = useRoute()
 const withSidebar = computed(() => !$route.meta.hideSidebar)
 const sidebarComp = computed(() => ($route.meta.sidebarComp as string) ?? 'Base')
-const Sidebar = defineAsyncComponent(() => import('../components/Sidebar/' + sidebarComp.value + '/index.vue'))
+const Sidebar = defineAsyncComponent({
+	loader: () => import('../components/Sidebar/' + sidebarComp.value + '/index.vue')
+})
 </script>
 
 <template>
