@@ -19,7 +19,6 @@ const themeOptions = [
 	{ label: '深色', value: 'dark' }
 ]
 const showPopover = ref(false)
-console.log(userStore.loginState, hasLogin.value, document.cookie, sessionStorage)
 function handleChangeTheme(val: string) {
 	systemStore.setTheme(val)
 }
