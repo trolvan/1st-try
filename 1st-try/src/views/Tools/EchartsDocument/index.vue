@@ -1,8 +1,9 @@
 <script setup lang="ts">
+const src = new URL('/public/echartsDocuments/option.html', import.meta.url).href
 </script>
 
 <template>
-  <iframe src="public/echartsDocuments/option.html" title="echarts-doc"></iframe>
+  <iframe :src="src" title="echarts-doc"></iframe>
 </template>
 
 <style scoped lang="scss">

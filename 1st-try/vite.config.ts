@@ -13,7 +13,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: process.env.NODE_ENV === 'production' ? './' : '/',
+	base: './',
 	plugins: [
 		vue(),
 		vueJsx(),
