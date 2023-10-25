@@ -7,7 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Base: typeof import('./src/layouts/Base/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
@@ -28,11 +27,9 @@ declare module 'vue' {
     ElUpload: typeof import('element-plus/es')['ElUpload']
     IEpArrowRight: typeof import('~icons/ep/arrow-right')['default']
     IEpBrush: typeof import('~icons/ep/brush')['default']
-    IEpDocument: typeof import('~icons/ep/document')['default']
     IEpDownload: typeof import('~icons/ep/download')['default']
     IEpMore: typeof import('~icons/ep/more')['default']
     IEpPromotion: typeof import('~icons/ep/promotion')['default']
-    IEpQuestion: typeof import('~icons/ep/question')['default']
     IEpQuestionFilled: typeof import('~icons/ep/question-filled')['default']
     IEpSwitchButton: typeof import('~icons/ep/switch-button')['default']
     IEpUploadFilled: typeof import('~icons/ep/upload-filled')['default']
