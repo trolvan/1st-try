@@ -20,21 +20,24 @@ export default defineConfig({
 		AutoImport({
 			resolvers: [
 				ElementPlusResolver(),
-				IconsResolver({ prefix: 'Icon' })
-			]
+				IconsResolver({ enabledCollections: ['ep'] })
+			],
+			dts: 'types/auto-imports.d.ts'
 		}),
 		Components({
 			resolvers: [
 				ElementPlusResolver(),
 				IconsResolver({ enabledCollections: ['ep'] }),
-			]
+			],
+			dts: 'types/components.d.ts'
 		}),
 		ElementPlus({ useSource: true }),
-		Icons({ autoInstall: true })
+		Icons({ compiler: 'vue3', autoInstall: true })
 	],
 	resolve: {
 		alias: {
-			'@': fileURLToPath(new URL('./src', import.meta.url))
+			'@': fileURLToPath(new URL('./src', import.meta.url)),
+			'_buttons': fileURLToPath(new URL('./src/components/Buttons', import.meta.url))
 		}
 	}
 })

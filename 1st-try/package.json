@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "vite --host --open",
-    "build": "vite build",
     "preview": "vite preview",
     "test:unit": "cypress run --component",
-    "build-only": "vite build",
+    "build": "vite build",
+    "build:test": "vite build && node serve.js",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },

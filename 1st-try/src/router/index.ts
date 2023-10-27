@@ -21,7 +21,14 @@ const router = createRouter({
 			meta: { title: '首页', auth: true },
 			component: () => import('@/views/Home/index.vue')
 		},
-		...routes
+		...routes,
+		{ path: '/:pathMatch(.*)', meta: { noMenu: true }, redirect: '/404' },
+		{
+			path: '/404',
+			name: '404',
+			meta: { title: '404', noMenu: true },
+			component: () => import('@/views/404/index.vue')
+		}
 	]
 })
 
