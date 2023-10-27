@@ -36,7 +36,8 @@ export default defineConfig({
 	],
 	resolve: {
 		alias: {
-			'@': fileURLToPath(new URL('./src', import.meta.url))
+			'@': fileURLToPath(new URL('./src', import.meta.url)),
+			'_buttons': fileURLToPath(new URL('./src/components/Buttons', import.meta.url))
 		}
 	}
 })

@@ -10,7 +10,8 @@
     "composite": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "_buttons/*": ["./src/component/Buttons"]
     }
   }
 }
