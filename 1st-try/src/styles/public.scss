@@ -44,6 +44,7 @@ svg.icon {
   white-space: nowrap;
 }
 .bold { font-weight: bold; }
+.pre-wrap { white-space: pre-wrap; }
 
 // 文字排列方向
 @each $direction in  left, center, right {
