@@ -19,7 +19,6 @@ request.interceptors.response.use(
 )
 
 function ErrorMessage(err: any) {
-	console.log(err)
 	const errorMessageMap: any = {
 		400: '请求错误', 401: '请求错误', 404: '请求地址错误', 408: '请求超时',
 		500: '服务器内部错误', 501: '服务未实现', 502: '网关错误', 503: '服务不可用',
