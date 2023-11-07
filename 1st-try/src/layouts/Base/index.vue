@@ -6,7 +6,7 @@ import {useRoute} from 'vue-router'
 const $route = useRoute()
 const withSidebar = computed(() => !$route.meta.hideSidebar)
 const sidebarComp = computed(() => ($route.meta.sidebarComp as string) ?? 'Base')
-const comps = import.meta.glob('../components/Sidebar/**/index.vue')
+const comps: any = import.meta.glob('../components/Sidebar/**/index.vue')
 const Sidebar = defineAsyncComponent(comps[`../components/Sidebar/${sidebarComp.value}/index.vue`])
 </script>
 
