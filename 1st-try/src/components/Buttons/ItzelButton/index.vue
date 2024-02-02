@@ -40,7 +40,7 @@ const btnStyle = computed(() => ({
 </script>
 
 <template>
-  <a class="button--itzel clickable" :style="btnStyle">
+  <a class="button--itzel clickable text-center" :style="btnStyle">
     <span class="button__border" :style="{ borderColor, borderWidth }"></span>
     <span class="button__icon" :style="{ fontSize: iconSize + 'px' }">
       <i v-if="ccon" :class="ccon" />
@@ -90,8 +90,8 @@ const btnStyle = computed(() => ({
   .button__text {
     display: block;
     transition: transform 0.3s, opacity 0.3s;
-    -webkit-transition-delay: 0.3s;
-    transition-delay: 0.3s;
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
   }
   &:hover {
     .button__border {
