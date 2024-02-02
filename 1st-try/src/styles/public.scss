@@ -17,7 +17,7 @@ a {
   color: $pageTextColor;
   transition: 0.4s;
   &:hover {
-    color: $primaryColor;
+    color: $color-primary;
     transition: 0.4s;
   }
 }
