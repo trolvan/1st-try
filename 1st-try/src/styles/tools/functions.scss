@@ -1,0 +1,27 @@
+/* 全局scss函数 */
+
+/* 计算色值的亮度 */
+$red-magic-number: 241;
+$green-magic-number: 691;
+$blue-magic-number: 68;
+$brightness-divisor: $red-magic-number + $green-magic-number + $blue-magic-number;
+@function brightness($color) {
+  $red-component: red($color);
+  $green-component: green($color);
+  $blue-component: blue($color);
+  $number: sqrt((
+          ($red-component * $red-component * $red-magic-number) +
+          ($green-component * $green-component * $green-magic-number) +
+          ($blue-component * $blue-component * $blue-magic-number)
+  ) / $brightness-divisor);
+  @return calc(100% * $number / 255)
+}
+
+/* 根据背景色亮度决定文字颜色 */
+@function contrasting-color($colors, $light: $pageTextColor, $dark: #fff) {
+  @if brightness($colors) < 50% {
+    @return $light;
+  } @else {
+    @return $dark;
+  }
+}

@@ -1,4 +1,5 @@
-@import "variables";
+// 全局公共基础样式
+
 // 标签
 * {
   margin: 0;
@@ -16,7 +17,7 @@ a {
   color: $pageTextColor;
   transition: 0.4s;
   &:hover {
-    color: $primaryColor;
+    color: $color-primary;
     transition: 0.4s;
   }
 }
@@ -44,6 +45,7 @@ svg.icon {
   white-space: nowrap;
 }
 .bold { font-weight: bold; }
+.pre-wrap { white-space: pre-wrap; }
 
 // 文字排列方向
 @each $direction in  left, center, right {

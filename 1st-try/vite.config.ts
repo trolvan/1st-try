@@ -39,5 +39,13 @@ export default defineConfig({
 			'@': fileURLToPath(new URL('./src', import.meta.url)),
 			'_buttons': fileURLToPath(new URL('./src/components/Buttons', import.meta.url))
 		}
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				// 引入全局样式工具
+				additionalData: '@use "@/styles/tools/main.scss" as *;'
+			}
+		}
 	}
 })
