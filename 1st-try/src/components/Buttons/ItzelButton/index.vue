@@ -37,7 +37,6 @@ const btnStyle = computed(() => ({
 	color: $prop.textColor,
 	fontSize: $prop.textSize + 'px'
 }))
-console.log($prop.econ)
 </script>
 
 <template>
