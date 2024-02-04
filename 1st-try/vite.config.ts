@@ -10,6 +10,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import ElementPlus from 'unplugin-element-plus/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import {createSvgIconsPlugin} from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,7 +33,11 @@ export default defineConfig({
 			dts: 'types/components.d.ts'
 		}),
 		ElementPlus({ useSource: true }),
-		Icons({ compiler: 'vue3', autoInstall: true })
+		Icons({ compiler: 'vue3', autoInstall: true }),
+		createSvgIconsPlugin({
+			iconDirs: [fileURLToPath(new URL('./src/assets/icons', import.meta.url))],
+			symbolId: '[name]'
+		})
 	],
 	resolve: {
 		alias: {
