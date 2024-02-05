@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import PageHeader from '../components/PageHeader/index.vue'
-import {computed, defineAsyncComponent} from 'vue'
 import {useRoute} from 'vue-router'
 
 const $route = useRoute()

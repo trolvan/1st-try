@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import {computed} from 'vue'
-
 const $prop = defineProps({
 	// element+ icon
 	econ: {

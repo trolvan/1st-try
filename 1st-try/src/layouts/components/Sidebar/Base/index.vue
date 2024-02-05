@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Items from './Items.vue'
-import {computed, ref} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
 
 const $route = useRoute()
