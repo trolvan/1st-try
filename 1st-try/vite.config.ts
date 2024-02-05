@@ -23,7 +23,11 @@ export default defineConfig({
 				ElementPlusResolver(),
 				IconsResolver({ enabledCollections: ['ep'] })
 			],
-			dts: 'types/auto-imports.d.ts'
+			imports: ['vue'],
+			dts: 'types/auto-imports.d.ts',
+			eslintrc: {
+				enabled: false // 开启生成对应文件后可关闭  防止重复生成
+			}
 		}),
 		Components({
 			resolvers: [

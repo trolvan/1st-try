@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {genFileId} from 'element-plus'
 import type {FormRules, FormInstance, UploadFile, UploadRawFile, UploadInstance, UploadProps} from 'element-plus'
-import {reactive, ref} from 'vue'
 import {FontFormatter} from './utils/FontFormatter'
 
 interface CutterForm {
