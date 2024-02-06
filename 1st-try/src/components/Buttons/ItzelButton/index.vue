@@ -2,10 +2,10 @@
 const $prop = defineProps({
 	// element+ icon
 	econ: {
-		default: IEpPointer
+		default: 'pointer'
 	},
 	// 自定义icon
-	ccon: {
+	scon: {
 		type: String,
 		default: ''
 	},
@@ -40,11 +40,8 @@ const btnStyle = computed(() => ({
 <template>
   <a class="button--itzel clickable text-center" :style="btnStyle">
     <span class="button__border" :style="{ borderColor, borderWidth }"></span>
-    <span class="button__icon" :style="{ fontSize: iconSize + 'px' }">
-      <i v-if="ccon" :class="ccon" />
-      <el-icon v-else>
-        <component :is="econ" />
-      </el-icon>
+    <span class="button__icon">
+      <icon :scon="scon" :econ="econ" :size="iconSize" />
     </span>
     <span class="button__text"><slot>example</slot></span>
   </a>
