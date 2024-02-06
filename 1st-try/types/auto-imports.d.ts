@@ -6,12 +6,6 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
-  const IEpClose: typeof import('~icons/ep/close')['default']
-  const IEpDownload: typeof import('~icons/ep/download')['default']
-  const IEpHouse: typeof import('~icons/ep/house')['default']
-  const IEpMinus: typeof import('~icons/ep/minus')['default']
-  const IEpPointer: typeof import('~icons/ep/pointer')['default']
-  const IEpRefreshLeft: typeof import('~icons/ep/refresh-left')['default']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
   const customRef: typeof import('vue')['customRef']
