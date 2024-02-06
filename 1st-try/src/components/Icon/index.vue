@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import {computed} from 'vue'
 const $props = defineProps({
-	// prefix: {
-	// 	type: String,
-	// 	default: 'icon'
-	// },
-	icon: {
+	scon: {
 		// 图标名 src/assets/icons下的文件名
-		type: String,
-		required: true
+		type: String
+	},
+	econ: {
+		// element+ 图标
+		type: null
 	}
 })
-const symbolId = computed(() => `#${$props.icon}`)
+const symbolId: any = computed(() => $props.scon ? `#${$props.scon}` : '')
+const econFormatter = (name: string) => `ep-${(name || 'eleme')['toLowerCase']()}`
 </script>
 
 <template>
   <el-icon v-bind="$attrs">
-    <svg aria-hidden="true">
+    <svg v-if="scon" aria-hidden="true">
       <use class="svg-use" :href="symbolId" />
     </svg>
+    <component v-else :is="econFormatter(econ)" />
   </el-icon>
 </template>
 
 <style scoped lang="scss">
-.svg-icon {
+svg {
   vertical-align: -0.1em;
   fill: currentColor;
   overflow: hidden;
