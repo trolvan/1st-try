@@ -25,15 +25,15 @@ function toggleSidebar() {
         <el-button  type="primary" class="m-2" @click="toggleSidebar">收起左侧菜单</el-button>
         <el-menu v-show="showSidebar" class="side-menu" mode="vertical" router :default-active="defaultActive" :collapse-transition="false">
           <template v-for="item in second">
-            <template v-if="!item.meta.hidden">
+            <template v-if="!item.meta?.hidden">
               <items :item="item" :key="item.path" />
             </template>
           </template>
         </el-menu>
       </template>
       <div v-else class="expand-btn" @click="toggleSidebar">
-        <el-icon><i-ep-arrow-right /></el-icon>
-        <i class="el-icon-arrow-right" /></div>
+        <icon econ="arrowRight" />
+      </div>
     </div>
   </transition>
 </template>

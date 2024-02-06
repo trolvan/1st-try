@@ -35,21 +35,16 @@ function logout() {
     <div class="header-right">
       <el-popover v-model:visible="showPopover" placement="left" popper-class="header-right-popover" transition="el-zoom-in-center">
         <template #reference>
-          <el-icon size="20">
-            <i-ep-more :class="['clickable func-list__icon', { active: showPopover }]" />
-          </el-icon>
+          <icon econ="more" :size="20" :class="['clickable func-list__icon', { active: showPopover }]" />
         </template>
         <ul class="func-list">
           <li @click="logout">
-            <el-icon size="16" class="mr-2">
-              <i-ep-switch-button v-if="hasLogin" />
-              <i-ep-promotion v-else />
-            </el-icon>
+            <icon size="16" :econ="hasLogin ? 'switchButton' : 'promotion'" class="mr-2" />
             {{ hasLogin ? '注销' : '去登录' }}
           </li>
           <li class="func-sub-list">
             <div class="func-sub-list__title">
-              <el-icon size="16" class="mr-2"><i-ep-brush /></el-icon>皮肤主题
+              <icon :size="16" econ="brush" class="mr-2" />皮肤主题
             </div>
             <div class="func-sub-list__item-wp">
               <div
