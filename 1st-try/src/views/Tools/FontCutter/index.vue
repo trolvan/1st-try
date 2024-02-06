@@ -57,7 +57,7 @@ function cutAndDownload() {
 
 <template>
   <div class="cutter-content">
-    <el-form :model="cutterForm" ref="formRef" :rules="rules">
+    <el-form :model="cutterForm" ref="formRef" :rules="rules as any">
       <el-form-item prop="file" class="pb-4">
         <el-upload
             v-model:file-list="cutterForm.file"

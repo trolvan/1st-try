@@ -30,7 +30,7 @@ function logout() {
 <template>
   <div class="header-wp">
     <el-menu class="header-menu" mode="horizontal" router :default-active="current">
-      <el-menu-item v-for="item in items" :key="item.meta?.title" :index="item.path">{{ (item.meta as any)?.title }}</el-menu-item>
+      <el-menu-item v-for="item in items" :key="item.meta?.title as any" :index="item.path">{{ (item.meta as any)?.title }}</el-menu-item>
     </el-menu>
     <div class="header-right">
       <el-popover v-model:visible="showPopover" placement="left" popper-class="header-right-popover" transition="el-zoom-in-center">
