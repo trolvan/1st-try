@@ -17,7 +17,6 @@ app.use(pinia)
 
 // 全局全量导入element+图标
 for (const [key, component] of Object.entries(EPIconsVue)) {
-	console.log(key, component)
 	app.component(`ep-${key.toLowerCase()}`, component)
 }
 
