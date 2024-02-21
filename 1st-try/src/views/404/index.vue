@@ -4,8 +4,8 @@ import ItzelButton from '_buttons/ItzelButton/index.vue'
 
 const $router = useRouter()
 const buttons = [
-	{ econ: IEpRefreshLeft, func: () => $router.back(), text: '返回上一级' },
-	{ econ: IEpHouse, func: () => $router.push('/'), text: '返回首页', bind: { textColor: '#4096ef' } },
+	{ econ: 'refreshLeft', func: () => $router.back(), text: '返回上一级' },
+	{ econ: 'house', func: () => $router.push('/'), text: '返回首页', bind: { textColor: '#4096ef' } },
 ]
 </script>
 
@@ -15,7 +15,7 @@ const buttons = [
     <itzel-button
         v-for="btn in buttons"
         :key="btn.text"
-        :econ="btn.econ || btn.ccon"
+        :econ="btn.econ"
         v-bind="btn.bind"
         @click="btn.func"
     >{{ btn.text }}</itzel-button>

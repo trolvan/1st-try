@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {genFileId} from 'element-plus'
 import type {FormRules, FormInstance, UploadFile, UploadRawFile, UploadInstance, UploadProps} from 'element-plus'
-import {reactive, ref} from 'vue'
 import {FontFormatter} from './utils/FontFormatter'
 
 interface CutterForm {
@@ -58,7 +57,7 @@ function cutAndDownload() {
 
 <template>
   <div class="cutter-content">
-    <el-form :model="cutterForm" ref="formRef" :rules="rules">
+    <el-form :model="cutterForm" ref="formRef" :rules="rules as any">
       <el-form-item prop="file" class="pb-4">
         <el-upload
             v-model:file-list="cutterForm.file"
@@ -69,7 +68,7 @@ function cutAndDownload() {
             :auto-upload="false"
             drag
         >
-          <el-icon class="el-icon--upload"><i-ep-upload-filled /></el-icon>
+          <icon econ="uploadFilled" class="el-icon--upload" />
           <div class="el-upload__text">
             <em>拖拽文件到虚框内</em> 或 <em>点击虚框内的区域</em> 上传文件
           </div>
@@ -93,7 +92,7 @@ function cutAndDownload() {
     </el-form>
     <div class="btn-wp">
       <el-button type="primary" @click="cutAndDownload">
-        <el-icon class="mr-1"><i-ep-download /></el-icon>下载裁剪后的文件
+        <icon econ="download" class="mr-1" />下载裁剪后的文件
       </el-button>
       <el-tooltip effect="dark" placement="right">
         <template #content>
@@ -104,7 +103,7 @@ function cutAndDownload() {
             <li>3、点击按钮下载裁剪后的字体文件</li>
           </ul>
         </template>
-        <el-icon color="#666" size="16" class="ml-2"><i-ep-question-filled /></el-icon>
+        <icon color="#666" :size="16" class="ml-2" econ="questionFilled" />
       </el-tooltip>
     </div>
   </div>

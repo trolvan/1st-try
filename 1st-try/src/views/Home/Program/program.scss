@@ -1,0 +1,49 @@
+$headerHeight: 50px;
+
+.container {
+  background: #000;
+  color: #fff;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  z-index: 0;
+  box-sizing: border-box;
+  /* 代码雨canvas */
+  .bg-animate {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+  /* 头部 */
+  .fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $headerHeight;
+    background: rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
+    display: flex;
+    padding: 0 16px;
+    :deep(.log-btn) {
+      height: 100%;
+      width: 80px;
+      background: transparent;
+      border: none;
+      margin-left: auto;
+      color: rgba(255, 255, 255, 0.85);
+      &:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.12);
+      }
+    }
+  }
+  /* 主体 */
+  &-mainly {
+    padding: 16px 0;
+    width: 80vw;
+    min-width: 1200px;
+    margin: $headerHeight auto 0;
+  }
+}
