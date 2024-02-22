@@ -7,7 +7,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import ElementPlus from 'unplugin-element-plus/vite'
+// import ElementPlus from 'unplugin-element-plus/vite'
 import {createSvgIconsPlugin} from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
@@ -28,11 +28,13 @@ export default defineConfig({
 		}),
 		Components({
 			resolvers: [
-				ElementPlusResolver()
+				ElementPlusResolver({
+					importStyle: 'sass'
+				})
 			],
 			dts: 'types/components.d.ts'
 		}),
-		ElementPlus({ useSource: true }),
+		// ElementPlus({ useSource: true }),
 		createSvgIconsPlugin({
 			iconDirs: [fileURLToPath(new URL('./src/assets/icons', import.meta.url))],
 			symbolId: '[name]'
@@ -48,7 +50,7 @@ export default defineConfig({
 		preprocessorOptions: {
 			scss: {
 				// 引入全局样式工具
-				additionalData: '@use "@/styles/tools/main.scss" as *;'
+				additionalData: '@use "@/styles/tools/main.scss" as *;@use "@/styles/tools/epVariables.scss" as *;'
 			}
 		}
 	}
