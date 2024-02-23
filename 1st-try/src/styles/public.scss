@@ -91,4 +91,7 @@ svg.icon {
 /*定义滚动条轨道 圆角*/
 ::-webkit-scrollbar-track { border-radius: 2px;background-color: $scrollbarTrackColor; }
 /*定义滑块 圆角*/
-::-webkit-scrollbar-thumb { border-radius: 2px;background-color:$scrollbarThumbColor; }
+:not(:hover)::-webkit-scrollbar-thumb {background-color: transparent;}
+::-webkit-scrollbar-thumb { border-radius: 2px;background-color: rgba($scrollbarThumbColor, $scrollbarOpacity);}
+::-webkit-scrollbar-thumb:hover {background-color: rgba($scrollbarThumbColor, $scrollbarHoverOpacity);}
+::-webkit-scrollbar-thumb:active { background-color: rgba($scrollbarThumbActiveColor, $scrollbarHoverOpacity); }

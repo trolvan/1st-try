@@ -1,5 +1,8 @@
 /* 全局scss变量 */
-$pageTextColor: #333; // 全局文字颜色
+$pageTextColor: #333 !default; // 全局文字颜色
 
 $scrollbarTrackColor: transparent; // 滚动条轨道颜色
-$scrollbarThumbColor: #ddd; // 滚动条滑块颜色
+$scrollbarThumbColor: #bbb; // 滚动条滑块颜色
+$scrollbarThumbActiveColor: #ccc; // 滚动条滑块颜色
+$scrollbarOpacity: 0.6; // 滚动条透明度
+$scrollbarHoverOpacity: 1; // 滚动条透明度
