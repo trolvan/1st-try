@@ -50,7 +50,9 @@ export default defineConfig({
 		preprocessorOptions: {
 			scss: {
 				// 引入全局样式工具
-				additionalData: '@use "@/styles/tools/main.scss" as *;@use "@/styles/tools/epVariables.scss" as *;'
+				additionalData: `
+					@use "@/styles/tools/main.scss" as *;
+				`
 			}
 		}
 	}

@@ -25,3 +25,9 @@ $brightness-divisor: $red-magic-number + $green-magic-number + $blue-magic-numbe
     @return $dark;
   }
 }
+
+/* 构建css变量 */
+@function dVar($name) {
+  @return var(--d-#{$name});
+}
+

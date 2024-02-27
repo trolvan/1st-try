@@ -5,8 +5,24 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $pageTextColor;
+  color: dVar('pageTextColor');
   height: 100%;
   width: 100%;
   background: #f9f9f9;
+}
+
+// 定义全局变量
+html {
+  @each $k in map-keys($dVariables) {
+    --d-#{$k}: #{nth(map-get($dVariables, $k), 1)};
+  }
+  &.dark {
+    @each $k in map-keys($dVariables) {
+      $i: 2;
+      @if(length(map-get($dVariables, $k)) < 2) {
+        $i: 1;
+      }
+      --d-#{$k}: #{nth(map-get($dVariables, $k), $i)};
+    }
+  }
 }

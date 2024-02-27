@@ -1,3 +1,4 @@
+import 'element-plus/theme-chalk/dark/css-vars.css'
 import './styles/index.scss'
 
 import {createApp} from 'vue'

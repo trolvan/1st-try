@@ -17,6 +17,6 @@ const attrs = { ...useAttrs(), always: $props.always }
 
 <style scoped lang="scss">
 :deep(.el-scrollbar__thumb):active {
-  background-color: rgba($scrollbarThumbActiveColor, $scrollbarHoverOpacity);
+  background-color: dVar('scrollbarThumbActiveColor');
 }
 </style>
