@@ -18,10 +18,16 @@ $brightness-divisor: $red-magic-number + $green-magic-number + $blue-magic-numbe
 }
 
 /* 根据背景色亮度决定文字颜色 */
-@function contrasting-color($colors, $light: $pageTextColor, $dark: #fff) {
+@function contrasting-color($colors, $light: dVar('pageTextColor'), $dark: #fff) {
   @if brightness($colors) < 50% {
     @return $light;
   } @else {
     @return $dark;
   }
 }
+
+/* 构建css变量 */
+@function dVar($name) {
+  @return var(--d-#{$name});
+}
+

@@ -62,7 +62,7 @@ function logout() {
 </template>
 
 <style scoped lang="scss">
-.hover-style {
+%hover-style {
   transition: 0.3s;
   &:hover {
     cursor: pointer;
@@ -112,7 +112,7 @@ function logout() {
   li {
     padding: 8px 24px;
     &:not(.func-sub-list) {
-      @extend .hover-style;
+      @extend %hover-style;
     }
     &.func-sub-list {
       cursor: default;
@@ -123,7 +123,7 @@ function logout() {
       .func-sub-list__item-wp {
         margin-top: 4px;
         .func-sub-list__item {
-          @extend .hover-style;
+          @extend %hover-style;
           padding: 8px 46px;
           margin: 0 -24px;
           &.current {

@@ -1,5 +1,8 @@
 /* 全局scss变量 */
-$pageTextColor: #333; // 全局文字颜色
-
-$scrollbarTrackColor: transparent; // 滚动条轨道颜色
-$scrollbarThumbColor: #ddd; // 滚动条滑块颜色
+$dVariables: (
+        'pageTextColor': [#333, #fff],
+        'scrollbarTrackColor': [transparent],
+        'scrollbarThumbColor': [rgba(187, 187, 187, 0.6)],
+        'scrollbarThumbHoverColor': [#bbb],
+        'scrollbarThumbActiveColor': [#ccc],
+);

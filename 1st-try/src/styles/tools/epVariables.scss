@@ -1,3 +1,10 @@
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
-  $colors: (),
+  $scrollbar: (
+    (
+      'opacity': 1,
+      'bg-color': dVar('scrollbarThumbColor'),
+      'hover-opacity': 1,
+      'hover-bg-color': dVar('scrollbarThumbHoverColor'),
+    )
+  )
 );
