@@ -1,6 +1,25 @@
-/* 全局scss函数 */
+// 全局scss函数
 
-/* 计算色值的亮度 */
+// 颜色 start
+// 根据背景色亮度决定文字颜色
+@function contrasting-color($colors, $light: dVar('pageTextColor'), $dark: #fff) {
+  @if brightness($colors) < 50% {
+    @return $light;
+  } @else {
+    @return $dark;
+  }
+}
+// 颜色 end
+
+// 变量 start
+// 构建css变量
+@function dVar($name) {
+  @return var(--d-#{$name});
+}
+// 变量 end
+
+// 计算 start
+// 计算色值的亮度
 $red-magic-number: 241;
 $green-magic-number: 691;
 $blue-magic-number: 68;
@@ -16,18 +35,4 @@ $brightness-divisor: $red-magic-number + $green-magic-number + $blue-magic-numbe
   ) / $brightness-divisor);
   @return calc(100% * $number / 255)
 }
-
-/* 根据背景色亮度决定文字颜色 */
-@function contrasting-color($colors, $light: dVar('pageTextColor'), $dark: #fff) {
-  @if brightness($colors) < 50% {
-    @return $light;
-  } @else {
-    @return $dark;
-  }
-}
-
-/* 构建css变量 */
-@function dVar($name) {
-  @return var(--d-#{$name});
-}
-
+// 计算 end
