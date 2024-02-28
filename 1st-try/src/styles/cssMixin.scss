@@ -1,0 +1,38 @@
+// 全局mixins 如果不包含选择器请写到 tools/mixin
+
+// margin|padding 0 ~ 120px 基数为4
+@each $p,$v in (p:padding,m:margin) {
+  @for $i from 0 to 30 {
+    .#{$p}-#{$i}{#{$v}:$i*4px}
+    .#{$p}l-#{$i}{#{$v}-left:$i*4px}
+    .#{$p}b-#{$i}{#{$v}-bottom:$i*4px}
+    .#{$p}t-#{$i}{#{$v}-top:$i*4px}
+    .#{$p}r-#{$i}{#{$v}-right:$i*4px}
+    .#{$p}x-#{$i}{#{$v}-left:$i*4px;#{$v}-right:$i*4px}
+    .#{$p}y-#{$i}{#{$v}-top:$i*4px;#{$v}-bottom:$i*4px}
+  }
+  .#{$p}-auto{#{$v}:auto}
+  .#{$p}x-auto{#{$v}-left:auto;#{$v}-right:auto}
+  .#{$p}y-auto{#{$v}-top:auto;#{$v}-bottom:auto}
+}
+
+// 字体大小 12px ~ 40px
+@for $fs from 12 through 40 {
+  .fs#{$fs} {
+    font-size: #{$fs}px;
+  }
+}
+
+// 定位
+@each $v in (relative, absolute, fixed) {
+  .#{$v} {
+    position: $v;
+  }
+}
+
+/* 文字方向 */
+@each $pos in (left, center, right) {
+  .text-#{$pos} {
+    text-align: $pos;
+  }
+}
