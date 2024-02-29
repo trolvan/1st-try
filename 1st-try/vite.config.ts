@@ -7,8 +7,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-// import ElementPlus from 'unplugin-element-plus/vite'
 import {createSvgIconsPlugin} from 'vite-plugin-svg-icons'
+import legacyPlugin from '@vitejs/plugin-legacy'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,10 +34,14 @@ export default defineConfig({
 			],
 			dts: 'types/components.d.ts'
 		}),
-		// ElementPlus({ useSource: true }),
 		createSvgIconsPlugin({
 			iconDirs: [fileURLToPath(new URL('./src/assets/icons', import.meta.url))],
 			symbolId: '[name]'
+		}),
+		legacyPlugin({
+			targets: ['Chrome 64', 'not IE 11', 'defaults'],
+			modernPolyfills: true,
+			additionalLegacyPolyfills: ['regenerator-runtime/runtime']
 		})
 	],
 	resolve: {
@@ -53,6 +57,16 @@ export default defineConfig({
 				additionalData: `
 					@use "@/styles/tools/main.scss" as *;
 				`
+			}
+		}
+	},
+	build: {
+		target: 'es2015',
+		minify: 'terser',
+		terserOptions: {
+			compress: {
+				drop_console: true,
+				drop_debugger: true
 			}
 		}
 	}
