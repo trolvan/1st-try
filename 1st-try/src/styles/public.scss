@@ -81,9 +81,12 @@ a {
 
 // 滚动条样式
 ::-webkit-scrollbar { width: 6px; }
-/*定义滚动条轨道 圆角*/
+// 定义滚动条轨道 圆角
 ::-webkit-scrollbar-track { border-radius: 2px;background-color: dVar('scrollbarTrackColor'); }
-/*定义滑块 圆角*/
+// 定义滑块 圆角
 ::-webkit-scrollbar-thumb { border-radius: 2px;background-color: dVar('scrollbarThumbColor');}
 ::-webkit-scrollbar-thumb:hover {background-color: dVar('scrollbarThumbHoverColor');}
 ::-webkit-scrollbar-thumb:active { background-color: dVar('scrollbarThumbActiveColor'); }
+
+// 清除浏览器默认样式
+:focus-visible {outline: none;}

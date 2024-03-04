@@ -15,10 +15,12 @@
 
 // 定义全局变量
 html {
-  @each $k in map-keys($dVariables) {
-    --d-#{$k}: #{nth(map-get($dVariables, $k), 1)};
+  &, [data-theme="light"] {
+    @each $k in map-keys($dVariables) {
+      --d-#{$k}: #{nth(map-get($dVariables, $k), 1)};
+    }
   }
-  &.dark {
+  &.dark, [data-theme="dark"] {
     @each $k in map-keys($dVariables) {
       $i: 2;
       @if(length(map-get($dVariables, $k)) < 2) {

@@ -4,7 +4,7 @@ export const useSystemStore = defineStore('system', {
 	state: () => ({
 		theme: window.sessionStorage.getItem('theme') ?? 'light',
 		showSidebar: true,
-		homePageIndex: Number(window.sessionStorage.getItem('homePageIndex')) || -1
+		homePageIndex: Number(window.sessionStorage.getItem('homePageIndex') ?? -1)
 	}),
 	getters: {
 	},
@@ -13,6 +13,10 @@ export const useSystemStore = defineStore('system', {
 			this.theme = theme
 			window.sessionStorage.setItem('theme', theme)
 			document.getElementsByTagName('body')[0].setAttribute('data-theme', theme)
+		},
+		setHomePageIndex(index: number) {
+			if(this.homePageIndex !== index) this.homePageIndex = index
+			sessionStorage.setItem('homeIndex', this.homePageIndex.toString())
 		}
 	}
 })
