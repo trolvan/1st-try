@@ -7,8 +7,6 @@ import TCircleScale from '@/animations/TCircleScale/index.vue'
 const theme = useColorMode()
 const { homePageIndex } = systemStateRefs()
 const pages: any[] = Object.values(import.meta.glob('/src/views/Home/*/index.vue'))
-const hpi:number = homePageIndex.value < 0 ? getRandomPageIndex() : homePageIndex.value
-useSystemStore().setHomePageIndex(hpi)
 
 let PageComponent = computed(() => {
 	return defineAsyncComponent({
@@ -24,6 +22,8 @@ provide('pages', pages.map(p => {
 const getRandomPageIndex = () => {
 	return pages.length > 1 ? $ct.randomNum([0, pages.length - 1]) : 0
 }
+const hpi:number = homePageIndex.value < 0 ? getRandomPageIndex() : homePageIndex.value
+useSystemStore().setHomePageIndex(hpi)
 </script>
 
 <template>
