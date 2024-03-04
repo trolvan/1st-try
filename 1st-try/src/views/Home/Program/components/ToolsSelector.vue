@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { toolList } from '@/views/Home/homeData'
 
-const toolList = ref(Array(12).fill({}).map((t, i) => ({ name: `demo工具-${i + 1}`, scon: 'tool', path: '/tools/fontCutter' })))
 const focusIndex = ref(-1)
 const router = useRouter()
 const focusTool = (index: number) => {
