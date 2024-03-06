@@ -1,0 +1,41 @@
+$headerHeight: 50px;
+$containerBg: #fff;
+.container {
+  background: $containerBg;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding-top: $headerHeight;
+  /* 头部 */
+  .header-menu {
+    background: radial-gradient(transparent 1px, $containerBg 1px);
+    background-size: 4px 4px;
+    backdrop-filter: saturate(50%) blur(4px);
+    -webkit-backdrop-filter: saturate(50%) blur(4px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    padding: 0 16px;
+    height: $headerHeight !important;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    :deep(.log-btn) {
+      color: rgba($color-black, 0.65);
+      &:hover {
+        color: $color-black;
+        background: rgba($color-primary, 0.08);
+      }
+    }
+  }
+  /* 主体 */
+  &-mainly {
+    width: 80vw;
+    min-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 0;
+  }
+}

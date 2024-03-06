@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const introduceText = '首先这是一段介绍文字。\n然后这是一段用来介绍这个页面是用来干什么的文字。'
+import { introduceText } from '@/views/Home/homeData'
+
 let intervalTimer: number
 let flag = 1
 const typedText = ref(introduceText[0])

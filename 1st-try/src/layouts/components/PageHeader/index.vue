@@ -15,11 +15,11 @@ const current = computed(() => $route.matched[0].path)
 const theme = computed(() => systemStore.theme)
 const themeOptions = [
 	{ label: '浅色', value: 'light' },
-	{ label: '深色', value: 'dark' }
+	{ label: '深色', value: 'dark', disabled: true }
 ]
 const showPopover = ref(false)
-function handleChangeTheme(val: string) {
-	systemStore.setTheme(val)
+function handleChangeTheme(val: string, disabled?: boolean | undefined) {
+	!disabled && systemStore.setTheme(val)
 }
 function logout() {
 	userStore.logout()
@@ -50,8 +50,8 @@ function logout() {
               <div
                   v-for="t in themeOptions"
                   :key="t.label"
-                  :class="['func-sub-list__item', { current: theme === t.value }]"
-                  @click="handleChangeTheme(t.value)"
+                  :class="['func-sub-list__item', { current: theme === t.value, disabled: t.disabled }]"
+                  @click="handleChangeTheme(t.value, t.disabled)"
               >{{ t.label }}皮肤</div>
             </div>
           </li>
@@ -64,7 +64,7 @@ function logout() {
 <style scoped lang="scss">
 %hover-style {
   transition: 0.3s;
-  &:hover {
+  &:not(.disabled):hover {
     cursor: pointer;
     background: #f0f7ff;
     transition: 0.3s;
@@ -128,6 +128,11 @@ function logout() {
           margin: 0 -24px;
           &.current {
             color: #409EFF;
+          }
+          &.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            user-select: none;
           }
         }
       }
