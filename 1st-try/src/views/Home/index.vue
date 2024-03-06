@@ -1,11 +1,10 @@
 <script setup lang='ts'>
 import {useSystemStore, systemStateRefs} from '@/stores/system'
 import {$ct} from '@/utils/CommonTools'
-import {useColorMode} from '@vueuse/core'
 import TCircleScale from '@/animations/TCircleScale/index.vue'
 
-const theme = useColorMode()
-const { homePageIndex } = systemStateRefs()
+const homeTheme = ref('light')
+const { homePageIndex, theme } = systemStateRefs()
 const pages: any[] = Object.values(import.meta.glob('/src/views/Home/*/index.vue'))
 
 let PageComponent = computed(() => {
@@ -24,12 +23,28 @@ const getRandomPageIndex = () => {
 }
 const hpi:number = homePageIndex.value < 0 ? getRandomPageIndex() : homePageIndex.value
 useSystemStore().setHomePageIndex(hpi)
+
+const setHomeTheme = (v, ov) => {
+	ov && document.documentElement.classList.remove(ov)
+	v && document.documentElement.classList.add(v)
+}
+
+watch(homeTheme, (v, ov) => {
+	setHomeTheme(v, ov)
+})
+
+onBeforeMount(() => {
+	setHomeTheme(theme.value, homeTheme.value)
+})
+onBeforeUnmount(() => {
+	(homeTheme.value !== theme.value) && setHomeTheme(theme.value, homeTheme.value)
+})
 </script>
 
 <template>
   <t-circle-scale>
-    <div class="animate-wp" :data-theme="theme || 'light'" :key="homePageIndex">
-      <component :is="PageComponent" :ref="(el) => theme = el?.theme || ''" />
+    <div class="animate-wp" :data-theme="homeTheme || 'light'" :key="homePageIndex">
+      <component :is="PageComponent" :ref="(el) => homeTheme = el?.theme || 'light'" />
     </div>
   </t-circle-scale>
 </template>
