@@ -18,9 +18,6 @@ defineExpose({
       <div class="container-mainly">
         <website-introduction />
         <tools-selector class="mt-6" />
-        <website-introduction />
-        <tools-selector class="mt-6" /><website-introduction />
-        <tools-selector class="mt-6" />
       </div>
     </scrollbar>
   </div>
