@@ -35,6 +35,7 @@ const onLeave = (el, done) => {
     top: 0;
     width: 100%;
     pointer-events: none;
+    -webkit-backface-visibility: hidden;
   }
   &-enter-active {
     z-index: 11;
