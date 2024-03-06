@@ -9,7 +9,7 @@ const routeToTool = (path: string) => {
 </script>
 
 <template>
-  <el-card shadow="never">
+  <div class="tool-list-wp">
     <el-row type="flex" class="tool-list" :gutter="8">
       <el-col v-for="tool in toolList" :key="tool.name" :span="4">
         <div class="tool-item-wp">
@@ -20,12 +20,14 @@ const routeToTool = (path: string) => {
         </div>
       </el-col>
     </el-row>
-  </el-card>
+  </div>
 </template>
 
 <style scoped lang="scss">
-.el-card :deep(.el-card__body) {
+.tool-list-wp {
   padding: 8px 16px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
 }
 .tool-list {
   flex-wrap: wrap;
