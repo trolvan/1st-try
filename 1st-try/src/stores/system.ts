@@ -1,8 +1,9 @@
 import {defineStore, storeToRefs} from 'pinia'
+import {useColorMode} from '@vueuse/core'
 
 export const useSystemStore = defineStore('system', {
 	state: () => ({
-		theme: window.sessionStorage.getItem('theme') ?? 'light',
+		theme: useColorMode(),
 		showSidebar: true,
 		homePageIndex: Number(window.sessionStorage.getItem('homePageIndex') ?? -1)
 	}),
@@ -11,8 +12,6 @@ export const useSystemStore = defineStore('system', {
 	actions: {
 		setTheme(theme: string) {
 			this.theme = theme
-			window.sessionStorage.setItem('theme', theme)
-			document.getElementsByTagName('body')[0].setAttribute('data-theme', theme)
 		},
 		setHomePageIndex(index: number) {
 			if(this.homePageIndex !== index) this.homePageIndex = index
